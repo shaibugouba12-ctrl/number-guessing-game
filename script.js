@@ -5,17 +5,32 @@ function checkGuess() {
     let guess = document.getElementById("guess").value;
     attempts++;
 
-    if (guess == secretNumber) {
-        document.getElementById("result").textContent = "Correct! 🎉";
-    } else if (guess < secretNumber) {
-        document.getElementById("result").textContent = "Too low! 🔽";
-    } else {
-        document.getElementById("result").textContent = "Too high! 🔼";
-    }
-
     document.getElementById("attempts").textContent =
         "Attempts: " + attempts;
+
+    if (guess == secretNumber) {
+        document.getElementById("result").textContent =
+            "Correct! 🎉";
+    } else if (guess < secretNumber) {
+        document.getElementById("result").textContent =
+            "Too low! 🔽";
+    } else {
+        document.getElementById("result").textContent =
+            "Too high! 🔼";
+    }
+}
+
+function resetGame() {
+    secretNumber = Math.floor(Math.random() * 10) + 1;
+    attempts = 0;
+
+    document.getElementById("guess").value = "";
+    document.getElementById("result").textContent = "";
+    document.getElementById("attempts").textContent = "Attempts: 0";
 }
 
 document.getElementById("guessButton")
     .addEventListener("click", checkGuess);
+
+document.getElementById("resetButton")
+    .addEventListener("click", resetGame);
