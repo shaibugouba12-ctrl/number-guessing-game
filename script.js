@@ -9,8 +9,11 @@ function checkGuess() {
         "Attempts: " + attempts;
 
     if (guess == secretNumber) {
-        document.getElementById("result").textContent =
-            "Correct! 🎉";
+    document.getElementById("result").textContent =
+        "🏆 You Won! 🎉";
+}
+        
+            
     } else if (guess < secretNumber) {
         document.getElementById("result").textContent =
             "Too low! 🔽";
