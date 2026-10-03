@@ -3,17 +3,21 @@ let attempts = 0;
 
 function checkGuess() {
     let guess = document.getElementById("guess").value;
+
+    if (guess === "") {
+        document.getElementById("result").textContent =
+            "⚠️ Enter a number first!";
+        return;
+    }
+
     attempts++;
 
     document.getElementById("attempts").textContent =
         "Attempts: " + attempts;
 
     if (guess == secretNumber) {
-    document.getElementById("result").textContent =
-        "🏆 You Won! 🎉";
-}
-        
-            
+        document.getElementById("result").textContent =
+            "🏆 You Won! 🎉";
     } else if (guess < secretNumber) {
         document.getElementById("result").textContent =
             "Too low! 🔽";
@@ -29,7 +33,8 @@ function resetGame() {
 
     document.getElementById("guess").value = "";
     document.getElementById("result").textContent = "";
-    document.getElementById("attempts").textContent = "Attempts: 0";
+    document.getElementById("attempts").textContent =
+        "Attempts: 0";
 }
 
 document.getElementById("guessButton")
